@@ -1,0 +1,17 @@
+# Para bancos de dados CASSANDRA
+
+    . Classe ...Application
+    .. @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+
+    . Classe CassandraConfig
+    .. @EnableCassandraRepositories(basePackages = "br.com. ... (endereço do pacote do repositorio)")
+    .. extends AbstractCassandraConfiguration
+    .. métodos @Override
+    ... getSchemaAction
+    ... getKeyspaceCreations
+    ... getKeyspaceDrops
+    ... getKeyspaceName
+    ... getEntityBasePackages
+    ... CommandLineRunner
+    .... Session nativeSessionObject = session.getObject();
+    .... Criar tabelas, configurações, insert e etc...
