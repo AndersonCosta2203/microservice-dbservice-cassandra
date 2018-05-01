@@ -1,40 +1,42 @@
 package br.com.microservice.dbservice.domain;
 
-import com.datastax.driver.mapping.annotations.PartitionKey;
-import com.datastax.driver.mapping.annotations.Table;
+
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Objects;
 import java.util.UUID;
 
-@Table(name = "tab_gasto")
+@Table("tab_gasto")
 public class GastoEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @PartitionKey
+    @PrimaryKey
     private UUID id;
 
     private String descricao;
     private BigDecimal valor;
-    private Long codigoUsuario;
+    private Long usuario;
     private Instant data;
     private Long categoria;
 
-    public GastoEntity(UUID id, String descricao, BigDecimal valor, Long codigoUsuario, Instant data, Long categoria) {
+    public GastoEntity(UUID id, String descricao, BigDecimal valor, Long usuario, Instant data, Long categoria) {
         this.id = id;
         this.descricao = descricao;
         this.valor = valor;
-        this.codigoUsuario = codigoUsuario;
+        this.usuario = usuario;
         this.data = data;
         this.categoria = categoria;
     }
 
-    public GastoEntity(String descricao, BigDecimal valor, Long codigoUsuario, Instant data, Long categoria) {
+    public GastoEntity(String descricao, BigDecimal valor, Long usuario, Instant data, Long categoria) {
         this.descricao = descricao;
         this.valor = valor;
-        this.codigoUsuario = codigoUsuario;
+        this.usuario = usuario;
         this.data = data;
         this.categoria = categoria;
     }
@@ -66,12 +68,12 @@ public class GastoEntity {
         this.valor = valor;
     }
 
-    public Long getCodigoUsuario() {
-        return codigoUsuario;
+    public Long getUsuario() {
+        return usuario;
     }
 
-    public void setCodigoUsuario(Long codigoUsuario) {
-        this.codigoUsuario = codigoUsuario;
+    public void setUsuario(Long usuario) {
+        this.usuario = usuario;
     }
 
     public Instant getData() {

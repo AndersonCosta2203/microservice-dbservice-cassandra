@@ -78,7 +78,7 @@ public class CassandraConfig extends AbstractCassandraConfiguration {
                 ((Session) nativeSessionObject).execute("CREATE TABLE gastoskeyspace.tab_gasto (\n" +
                         "    id uuid PRIMARY KEY,\n" +
                         "    categoria bigint,\n" +
-                        "    codigousuario bigint,\n" +
+                        "    usuario bigint,\n" +
                         "    data timestamp,\n" +
                         "    descricao text,\n" +
                         "    valor decimal );");
